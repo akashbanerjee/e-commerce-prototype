@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<!-- Banerjee, Akash
+     Assignment 4
+     Class Account: jadrn006
+     Red ID: 822066239 -->
+<head>
+	<!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bertha's Deluxe Chocolates</title>
+
+    <!-- Favicon -->
+	<link rel="icon" href="images/favicon.ico?">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://jadran.sdsu.edu/bootstrap/css/bootstrap.min.css">
+
+    <!-- CSS file link -->
+    <link rel="stylesheet" href="css/shoppingsite.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,400i,700" rel="stylesheet">
+
+    <!-- jQuery js file link-->
+    <script src="http://jadran.sdsu.edu/jquery/jquery.js"></script>
+	
+		<!-- Required for Bootstrap modals and bootstrap dropdown -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+		<!-- Bootstrap js file link-->
+		<script src="http://jadran.sdsu.edu/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- External js -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/fetchProducts.js"></script>
+    <script src="js/shopping_cart.js"></script>
+
+   
+
+</head> 
+<body>
+	<!-- Header Starts-->
+  <div class="navbanner fixed-top">
+    <ul>
+      <li id="shop-name"><a href="#">Bertha's Chocolate House</a></li>
+    
+      <li class="active-page" id="home"><a href="#">Home</a></li>
+      <li id="products"><a href="#">Products</a></li>
+      <li class="order" id="order-online"><a href="#">Order Online</a></li>
+      <li id="aboutus"><a href="#">About Us</a></li>
+      <li id="contact"><a href="#">Contact</a></li>    
+    </ul>
+    <ul>
+   
+      <li class="navbanner-brand order"><a href="#"><img src="images/cart.png" id="cart-logo" alt="Shopping Cart"><span class="badge badge-primary"></span></a></li>
+    </ul>
+  </div>
+
+  <div class="parallax mainPage" id="first-image">
+    <div class="home-description">
+      <span class="border">Welcome to Bertha's Chocolate House</span>
+      <span class="scroll-down-text">Scroll Down for Featured Products and click the products tab to view all!</span>
+    </div>
+  </div>
+  <div id="intro-shop" class= "mainPage">
+    <h3>Who we are?</h3>
+    <p>Rooted in passion. Grounded in beliefs. Put into practice every day.
+        It’s what makes Bertha's chocolate the best in the world.</p>
+    <h4>Chocolates Trending Right Now!!</h4>
+  <div id="random-products"></div>
+  </div>
+  
+  <div class="parallax mainPage" id="fourth-image">
+  <div class="home-description">
+      <div class="christmas-border">Tis the season of Joy! <br> Featuring Christmas goodies!
+        <button class="btn select-christmas">Christmas Specials</button>
+      </div>
+  </div>
+  </div>
+  <div class="parallax mainPage" id="fifth-image">
+    <div class="home-description">
+      <span class="border">Meet Our Team!</span>
+    </div>
+  </div>
+
+<div id="ProductsPage">
+  <div id="products-header">View Our Delicious Products!</div>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col" id="categories-pane">
+      <h3>Filter Products</h3>
+      <ul>
+      <li class="row">
+        <input type="radio" class="categories-button" name="category" value="All Products" id="all_products" checked="checked"/><label for="all_products">All Products</label>
+      </li>
+      <li class="row">
+        <input type="radio" class="categories-button" name="category" value="Milk Chocolate" id="milk" /><label for="milk">Milk Chocolate</label>
+      </li>
+      <li class="row">
+        <input type="radio" class="categories-button" name="category"  value="Dark Chocolate" id="dark" /><label for="dark">Dark Chocolate</label>
+      </li>
+      <li class="row">
+        <input type="radio" class="categories-button" name="category"  value="Nuts and Chews" id="nuts" /><label for="nuts">Nuts and Chews</label>
+      </li>
+      <li class="row">
+        <input type="radio" class="categories-button"  name="category" value="Brittles and Toffies" id="brittle" /><label for="brittle">Brittles and Toffies</label>
+      </li>
+      <li class="row">
+        <input type="radio" class="categories-button" name="category"  value="Truffles" id="truffle" /><label for="truffle">Truffles</label>
+      </li>
+      <li class="row">
+        <input type="radio" class="categories-button" name="category"  value="Gifts" id="gifts" /><label for="gifts">Gifts</label>
+      </li>
+      <li class="row">
+        <input type="radio" class="categories-button" name="category"  value="Holiday Assortments" id="holiday" /><label for="holiday">Holiday Assortments</label>
+      </li>
+      </ul>
+      
+      
+      
+    </div>
+    <div class="col-md-10" id="products-page-content">
+      
+    </div>
+    
+
+    
+  </div>
+</div>
+
+</div>
+<div class="modal hide fade bd-example-modal-lg" id="product-modal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span >&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 info-box-images">
+               
+              </div>
+              <div class="col-md-6">
+                <div class="row category"></div>
+                <div class="row short-desc"></div>
+                <div class="row long-desc"></div>
+                <div class="row cost"></div>
+                <div class="row quantity">Quantity:
+                  <select name="quantity" id="quantity">
+                    <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <span class="item-added-msg">Added to Cart</span>
+            <button type="button" value="Add to Cart" class="btn home-page-buttons buy">Add to Cart</button>
+            <button class="btn home-page-buttons checkoutbutton">Go to Checkout</button>
+            <button type="button" class="btn close" data-dismiss="modal">Shop More!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<div id="OrderPage">
+</div>
+
+<div class="modal hide fade" id="order-modal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" enctype="multipart/form-data" id="orderForm" name="orderForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Checkout</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span >&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div id="accordion">
+                <div class="panel checkout-steps">
+                  <div role="tab" id="heading-billing-address">
+                    
+                    <h4 class="step-title">
+                      <a class="collapsed payement-header" role="button" data-toggle="collapse" data-parent="#accordion" href="#billingInformation" ><span class="step-number"><i class="fas fa-chevron-circle-right"></i></span>Billing Information
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="billingInformation" class="panel-collapse collapse">
+                    <div class="checkout-step-body">
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="firstName" class="col-form-label">First Name</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="firstName" id="firstName" placeholder="Enter First Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="lastName" class="col-form-label">Last Name</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="lastName" id="lastName" placeholder="Enter Last Name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress" class="col-form-label">Address Line 1</label><span class="mandatory">*</span>
+                        <input type="text" class="form-control form-control-sm" name="inputAddress" id="inputAddress" placeholder="Street Address, P.O. box, company name">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputAddress2" class="col-form-label">Address Line 2</label>
+                        <input type="text" class="form-control form-control-sm" name="inputAddress2" id="inputAddress2" placeholder="Apartment No, suite, unit">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-5">
+                          <label for="inputCity" class="col-form-label">City</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="inputCity" id="inputCity">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputState" class="col-form-label">State</label><span class="mandatory">*</span>
+                          <select name="inputState" id="inputState" class="form-control form-control-sm">
+                            <option value="" selected disabled>Select a State</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                          </select>     
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="inputZip" class="col-form-label">Zip</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="inputZip" id="inputZip">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="areacode" class="col-form-label">Primary Phone</label><span class="mandatory">*</span>
+                          <div class="input-group input-group-sm">
+                            <input type="text" class="form-control primaryPhone form-control-sm" name="areacode" id="areacode" size="3" maxlength="3" placeholder=""/>
+                            <span class="input-group-addon">-</span>
+                            <input type="text" class="form-control primaryPhone form-control-sm" name="phone1" id="phone1" size="3" maxlength="3" placeholder=""/>
+                            <span class="input-group-addon">-</span>
+                            <input type="text" class="form-control primaryPhone form-control-sm" name="phone2" id="phone2" size="4" maxlength="4" placeholder=""/>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="collapsed btn btn-default steps-next-button" id="billing-save" role="button" data-toggle="collapse" data-parent="#accordion"> Save & Next </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel checkout-steps">
+                  <div role="tab" id="heading-shipping-address">
+                    
+                    <h4 class="step-title">
+                      <a class="collapsed payement-header" role="button" data-toggle="collapse" data-parent="#accordion" href="#shippingInformation" ><span class="step-number"><i class="fas fa-chevron-circle-right"></i></span>Shipping Information
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="shippingInformation" class="panel-collapse collapse">
+                    <div class="checkout-step-body">
+                      <div class="sameAsBilling">Same as Billing
+                        <input type="checkbox" name="sameAsBilling" disabled="true">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="shippingfirstName" class="col-form-label">First Name</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="shippingfirstName" id="shippingfirstName" placeholder="Enter First Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="shippinglastName" class="col-form-label">Last Name</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="shippinglastName" id="shippinglastName" placeholder="Enter Last Name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="shippinginputAddress" class="col-form-label">Address Line 1</label><span class="mandatory">*</span>
+                        <input type="text" class="form-control form-control-sm" name="shippinginputAddress" id="shippinginputAddress" placeholder="Street Address, P.O. box, company name">
+                      </div>
+                      <div class="form-group">
+                        <label for="shippinginputAddress2" class="col-form-label">Address Line 2</label>
+                        <input type="text" class="form-control form-control-sm" name="shippinginputAddress2" id="shippinginputAddress2" placeholder="Apartment No, suite, unit">
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-5">
+                          <label for="shippinginputCity" class="col-form-label">City</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="shippinginputCity" id="shippinginputCity">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="shippinginputState" class="col-form-label">State</label><span class="mandatory">*</span>
+                          <select name="shippinginputState" id="shippinginputState" class="form-control form-control-sm">
+                            <option value="" selected disabled>Select a State</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District Of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                          </select>     
+                        </div>
+                        <div class="form-group col-md-3">
+                          <label for="shippinginputZip" class="col-form-label">Zip</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" name="shippinginputZip" id="shippinginputZip">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="shippingareacode" class="col-form-label">Primary Phone</label><span class="mandatory">*</span>
+                          <div class="input-group input-group-sm">
+                            <input type="text" class="form-control shippingprimaryPhone form-control-sm" name="shippingareacode" id="shippingareacode" size="3" maxlength="3" placeholder=""/>
+                            <span class="input-group-addon">-</span>
+                            <input type="text" class="form-control shippingprimaryPhone form-control-sm" name="shippingphone1" id="shippingphone1" size="3" maxlength="3" placeholder=""/>
+                            <span class="input-group-addon">-</span>
+                            <input type="text" class="form-control shippingprimaryPhone form-control-sm" name="shippingphone2" id="shippingphone2" size="4" maxlength="4" placeholder=""/>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="collapsed btn btn-default steps-next-button" id="shipping-save" role="button" data-toggle="collapse" data-parent="#accordion"> Save & Next </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel checkout-steps">
+                  <div role="tab" id="heading-payement">
+                    
+                    <h4 class="step-title">
+                      <a class="collapsed payement-header" role="button" data-toggle="collapse" data-parent="#accordion" href="#payementInformation" ><span class="step-number"><i class="fas fa-chevron-circle-right"></i></span>Payment Information
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="payementInformation" class="panel-collapse collapse">
+                    <div class="checkout-step-body">
+                      <div class="form-row">
+                        <div class="form-group col-md-12">
+                          <label class="col-form-label">Select Card</label><span class="mandatory">*</span>
+                                <div class="form-check form-check-inline">
+                                  <label class="form-check-cart-type">
+                                    <input class="form-check-card" type="radio" name="cc" id="visa" value="visa" aria-label="...">
+                                    <img class="card-img" src="images/visa.jpg" alt="Visa">
+                                  </label>
+                                </div>
+                              
+                                <div class="form-check form-check-inline">
+                                  <label class="form-check-cart-type">
+                                    <input class="form-check-card" type="radio" name="cc" id="mastercard" value="mastercard" aria-label="...">
+                                    <img class="card-img" src="images/mastercard.jpg" alt="Mastercard">
+                                  </label>
+                                </div>
+                              
+                                <div class="form-check form-check-inline">
+                                  <label class="form-check-cart-type">
+                                    <input class="form-check-card" type="radio" name="cc" id="discover" value="discover" aria-label="...">
+                                   <img class="card-img" src="images/discover.jpg" alt="Discover">
+                                  </label>
+                                </div>
+                             
+                                <div class="form-check form-check-inline">
+                                  <label class="form-check-cart-type">
+                                    <input class="form-check-card" type="radio" name="cc" id="americanexpress" value="americanexpress" aria-label="...">
+                                    <img class="card-img" src="images/americanexpress.jpg" alt="American Express">
+                                  </label>
+                                </div>
+
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-8">
+                          <label for="cc-number" class="col-form-label">Card Number</label><span class="mandatory">*</span>
+                          <input type="text" class="form-control form-control-sm" id="cc-number">
+                        </div>
+                        
+                          <div class="form-group col-md-4">
+                            <label for="shippingareacode" class="col-form-label">Expiration</label><span class="mandatory">*</span>
+                            <div class="card-expiration-data">
+                            
+                              <input type="text" class="form-control form-control-sm" id="expiration-month" placeholder="MM" maxlength="2">
+                           
+                            <span class="input-group-slash">/</span>
+                           
+                              
+                              <input type="text" class="form-control form-control-sm" id="expiration-year" placeholder="YY" maxlength="2">
+                            </div>
+                            
+                          </div>
+                        
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" id="ErrorMessageLine">
+            
+              <span></span>
+          </div>
+          <div id="waitpic"></div>
+        </div>
+        <div class="modal-footer">
+          <span class="mandatory">*</span> Required field!
+            <button type="reset" class="btn btn-danger" >Reset</button>
+            <button type="button" class="btn btn-success formSubmit">Place Order</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="AboutPage">
+  <div class="container">
+    <div class="row">
+      <div id="about-us-head">
+        About Us
+      </div>
+      <!-- Reference: http://www.chocomize.com/About-chocomize-custom-chocolate -->
+      <div id="about-us-content">
+        <div class="header-about-us">The Beginnings</div>
+        Initially, the concept behind Bertha's chocolate was to give consumers the ability to customize their dream chocolate bars. When the company launched, it offered premium Belgian chocolate, customizable with up to five ingredients. Thanks to an influx of publicity, O! - The Oprah Magazine, CNN, the New York Times, The View, Shark Tank and many more media powerhouses, the company was inundated with orders. That was a good thing, but quickly became too much of a good thing: customizing up to 1,000 orders per day, packaging them up and shipping them to individual addresses, became a round-the-clock struggle for the fledgling company.
+
+        <div class="header-about-us">A More Sustainable Model Emerged</div>
+
+        As one division of Bertha's chocolate worked overtime to fulfill an avalanche of consumer orders, another began offering their premium chocolate bars stamped with logos. These made ideal corporate chocolate gifts and custom chocolate bars for retailers. The production requirements for selling in bulk to corporate clients and retailers were much more streamlined than they were with individual sales. Instead of spending a huge amount of time crafting each chocolate bar with a different ingredients, the company only had to manufacture a few different products in very high quantities to fulfill their corporate and retail orders.
+
+        <div class="header-about-us">Bertha's Made a Strategic Decision: It Would Do One Thing and Do it Very Well</div>
+        For a while, the company ran two divisions: an online consumer division and corporate gifting and retail division. Over time, uncontrollable external factors meant that fulfilling individual orders would become too expensive for customers. For example, shipping costs skyrocketed. It simply wasn’t possible for Bertha's to offer free shipping and free returns and make a profit. Conversely, it didn’t make sense for customers to pay to have their orders shipped. In some cases, the shipping costs would have been three times higher than the cost of the chocolate they ordered (even higher in summer!) Faced with this dilemma, Bertha's opted to discontinue its individual sales and focus exclusively on the corporate gifting and retail channels.
+
+        <div class="header-about-us">Bertha's Outlook for the Future? Sweet!</div>
+        Streamlining its operation to focus on the most sustainable path means that Bertha's can now fully satisfy its customers’ demand for high-quality logo chocolate bars, elegant truffle sets, chocolate coins, squares and much more! All of that while maintaining the highest service standards and fast turnaround. No longer tasked with churning out thousands of unique individual orders, the Bertha's team is freed up to focus on creating innovative corporate chocolate gifts and logo chocolates for its core client base: business customers and the hospitality industry. 
+
+If your company is looking to wow your clients with truly unique corporate gifts that raise brand awareness and that your clients will be happy to receive, your search is over. How many people do you know who don’t love chocolate? Exactly. Stay tuned and check back often for exciting news about our newest corporate gift offerings!
+      </div>
+    </div>
+  </div>
+</div>
+<div id="ContactsPage">
+  <div class="container">
+    <div class="row">
+      <div id="contacts-us-head">
+        Contact Us
+      </div>
+      <div id="contacts-us-content">
+        <div class="header-contact-us">Head Office</div>
+        SDSU East Commons
+          5500 Campanile Dr,
+          San Diego, CA 92182 
+          <!-- Reference: https://www.haighschocolates.com.au/contact-us -->
+        <div class="header-contact-us">Online Purchase and Telephone Enquiries</div>
+        Orders for Pre- Christmas Delivery
+
+Please note we are monitoring the weather. To ensure your chocolates arrive in the best possible condition, we may delay despatching some of the orders. However, all orders placed prior to 5pm Friday, 15th December will arrive before Christmas.
+
+Personal online orders for receipt prior to Christmas must be placed by 5pm, 15th December 2017. Online orders will still be accepted after this date, however, we are unable to guarantee delivery prior to 25th December 2017.
+
+Corporate orders for receipt prior to Christmas must be placed and paid by 5pm, 8th December 2017. Please ensure order delivery details include the full business name and address and the business is open for trading to receive your order on the estimated delivery day. To place a Corporate Order click here
+  <div class="header-contact-us">Media Enquiries</div>
+    Email: berthaforu@sdsu.edu
+
+    
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Reference: My own websites I practiced on github as part of Coursera Angular JS Course:
+https://github.com/akashbanerjee/china-bistro
+Coursera Course: https://www.coursera.org/learn/single-page-web-apps-with-angularjs -->
+<footer class="bertha-footer">
+	
+	
+      <div class="container">
+        <div class="row">
+          <section id="contact" class="col-sm-4">
+            <span>CONTACT US</span><br>
+            +1(619) 999-9999<br>
+            berthaforu@sdsu.edu<br>
+            SDSU East Commons - 9 am to 9pm<br>
+            Sunday Closed<br>
+            					
+						
+          </section>
+          <section id="address" class="col-sm-4">
+            <span>ADDRESS:</span><br>
+            SDSU East Commons<br>
+            5500 Campanile Dr,<br>
+            San Diego, CA 92182 <br>
+
+					  <a href="#"><img class = "footer-images" src="images/Facebook.png" alt="Facebook"/></a>
+				      <a href="#"><img class = "footer-images" src="images/Twitter.png" alt="Twitter"/></a>
+				      <a href="#"><img class = "footer-images" src="images/Instagram.png" alt="Instagram"/></a>
+				      <a href="#"><img class = "footer-images" src="images/GooglePlus.png" alt="GooglePlus"/></a>
+	
+             
+          </section>
+          <section id="qoutes" class="col-sm-4">
+            <p>"The Hanukkah Peanut Brittle is a must try. We also loved their holiday assortments!"</p>
+            <p>"Bertha's is the perfect solution for a last minute gift"</p>
+            <p>"Bertha's chocolate house is an experience not to be missed! Would love to go again"</p>
+          </section>
+        </div>
+        <hr class="visible-xs">
+        <div class="text-center">
+          &copy; Copyright Akash Banerjee 2017 | ADMIN
+        </div>
+      </div>
+  
+	
+</footer>
+</body>
+</html>

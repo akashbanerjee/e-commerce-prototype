@@ -1,0 +1,698 @@
+/* Banerjee, Akash
+     Assignment 4
+     Class Account: jadrn006
+     Red ID: 822066239 */
+body, html{
+	
+	margin: 0;
+	height: 100%;
+	font-family: 'Barlow', sans-serif;
+  	color: #5a5a5a;
+}
+button{
+	cursor: pointer;
+	background-color:#f7faff;
+}
+
+#ProductsPage, #OrderPage, #AboutPage, #ContactsPage {
+	display: none;
+	padding-top: 100px;
+}
+
+/* FRONT PAGE CSS START */
+.navbanner {
+  width: 100%;
+  position:fixed;
+  top: 0;
+  background-color: #542A0C;
+  
+}
+
+.navbanner ul li{
+	display: table-cell;
+}
+
+.navbanner ul {
+	list-style-type: none;
+  padding:0;
+  margin:0; 
+}
+
+.navbanner ul li{}
+.navbanner ul:first-child { float: left;}
+.navbanner ul:last-child {float:right;}
+.navbanner ul li:last-child{
+	padding-right: 13px;
+}
+
+.navbanner a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  display: block;
+  padding: 11px;
+}
+
+.navbanner li:hover {
+  
+  background-color: #ECE4DE;
+
+}
+.navbanner li:hover a {
+  
+  color: black;
+
+}
+.navbanner li.active-page {
+  background-color: #ECE4DE;
+}
+.navbanner li.active-page a {
+	color: black;
+}
+
+#cart-logo{
+	width: auto;
+	height: 40px;
+	color: #FFF;
+	position: relative;
+	margin-right: 5px;
+
+}
+
+/* .navbanner-brand{
+	padding: 0;
+	padding-right: 35px;
+	margin: 0;
+} */
+.badge{
+	white-space: nowrap;
+border-radius: 50%;
+}
+
+/* 
+#header-nav	{
+
+	background-color: #542A0C;
+	
+	width: 100%;
+	
+
+}
+#header-nav a{
+	color: #FFF;
+}
+.navbar-info{
+	color: #040A09;
+} */
+
+.highLightGender {
+	box-shadow: 0 0 1.5px 1px red;
+}
+
+/* .navbar-brand {
+	padding-top: 25px;
+	color: #040A09;
+}
+
+.navbar-brand h1 {
+	line-height: 0.75;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-shadow: 1px 1px 1px #222;
+	color: #040A09;
+
+} */
+.mandatory{
+	color: red;
+}
+
+.error {
+    border:  1px solid red !important;   
+    background-color: #FEE !important;  
+}
+
+#ErrorMessageLine {
+	color: red;
+}
+
+
+
+/* .navbar-info {
+	display: inline;
+}
+ */
+
+
+
+
+.footer-images {
+  height: 40px;
+  width: 40px;
+}
+
+.footer-images:hover {
+  height: 50px;
+  width: 50px;
+  transition: 0.8s;
+  cursor: pointer;
+  text-align: center;
+  left: 50%;
+}
+
+
+.bertha-footer {
+	
+	display: block;
+	margin-top: 30px;
+  padding-top: 35px;
+  padding-bottom: 30px;
+  background-color: #542A0C;
+  border-top: 0;
+  color: #FFF;
+  
+}
+
+
+
+
+
+
+.bertha-footer div.row {
+  margin-bottom: 35px;
+}
+
+#contact, #address {
+	line-height: 2;
+}
+
+.bertha-footer span{
+	font-weight: bold;
+	font-size: 1.3em;
+}
+#qoutes p{
+	font-style: italic;
+}
+
+#qoutes p:nth-child(1) {
+  margin-top: 35px;
+}
+
+
+.panel-body{
+	padding: 10px 18px;
+
+}
+
+#reportHead {
+	text-align: center;
+
+}
+
+table {
+	margin-left: auto;
+    margin-right: auto;
+	width:  60% !important;
+}
+table td,th{
+	padding: 5px;
+	text-align: center;
+	
+
+
+}
+
+
+.parallax {
+	position: relative;
+    width: 100%; 
+	height: auto;
+   
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    
+    
+}
+.parallax:first-of-type{
+	padding-top: 50px;
+}
+#first-image{
+	 background-image: url('../images/chef.jpg');
+	 background-position:  0 61px !important; 
+	 min-height: 100%;
+ 
+}
+#second-image{
+	 background-image: url('../images/chocolates-home-1.JPG');
+	 min-height: 50%;
+}
+#third-image{
+	 background-image: url('../images/chocolates-home-christmas.jpg');
+	 min-height: 50%;
+}
+#fourth-image{
+	 background-image: url('../images/cakes-christmas-tree.jpeg');
+	 min-height: 100%;
+}
+#fifth-image{
+	 background-image: url('../images/chefs-team.jpg');
+	 min-height: 400px;
+}
+
+.home-description{
+	position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+
+}
+
+.border{
+	background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+
+}
+
+.christmas-border{
+	display: block;
+	background-color: rgba(114,13,8,0.5);
+	color: #FFF;
+
+	 padding: 18px;
+  font-size: 35px;
+  letter-spacing: 10px;
+}
+
+#intro-shop{
+	text-align: center;
+	padding: 50px;
+}
+#intro-shop-2{
+	background-color: rgba(0,0,0,0.8);
+	color: #f7f7f7;
+	text-align: center;
+	padding: 50px;
+}
+
+#products-header{
+	text-align: center;
+	padding: 20px;
+	font-size: 30px;
+}
+#categories-pane{
+	margin-left: 20px;
+}
+#categories-pane h3{
+	padding-bottom: 20px;
+	padding-left: 15px;
+
+}
+#categories-pane ul{
+	list-style: none;
+}
+#categories-pane ul li {
+	color: black;
+	border-bottom: 1px solid #333;
+}
+#categories-pane ul li label{
+	cursor: pointer;
+  	height: 30px;
+  	padding-bottom:20px;
+  	width: 166px;
+}
+#categories-pane ul li label:hover{
+	background-color: #F3EDE8;
+
+}
+#categories-pane input{
+	font-size: 10px;
+}
+
+
+.container-data {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.container-data .data-box{
+  /* flex-basis: 85%; */
+}
+
+.info-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.button-container{
+  padding: 10px;
+  text-align: center;
+}
+.container-data .info-box {
+
+  padding: 10px;
+  /* flex-basis: 25%; */
+  margin: 10px;
+ background-color: #F3EDE8;
+  
+}
+
+.info-box-images {
+  /* display: inline-block; */
+  
+}
+.info-box-images img{
+	width: 275px;
+	height: auto;
+}
+
+.info-box-heading {
+  text-align: center;
+  height: 60px;
+  width: 275px;
+
+}
+
+.info-box-short-desc {
+  height: 70px;
+  width: 275px;
+
+}
+
+.info-box-price {
+	display: inline-block;
+  width: 275px;
+  float: left;
+}
+.info-box-price button{
+
+	float: right;
+}
+.modal-dialog *{
+	text-align: left;
+}
+.order-summary{
+	background-color: #ECE4DE;
+	padding: 30px 30px 10px 30px;
+	letter-spacing: 1px;
+	margin-bottom: 15px;
+}
+#item-cost span{
+
+}
+#total-cost{
+	border: 3px;
+	border-style: solid none;
+	font-weight: bold;
+	margin-top: 10px;
+	padding: 5px 0;
+}
+.input-checkout-quantity{
+	width: 60px;
+}
+.proceed-checkout{
+	width: 100%;
+	padding: 5px;
+	margin-top: 20px;
+	letter-spacing: 1px;
+	background-color: #7D736A;
+	color: white;
+	border: 1px solid #7D736A;
+	height: 50px;
+
+}
+.proceed-checkout:hover{
+	background-color: #6A6245;
+}
+.modal-body span{
+	font-weight: bold;
+	font-style: italic;
+}
+.cart-head{
+
+	border: 1px solid #E0DCD8;
+}
+.cart-head h3{
+	letter-spacing: 1px;
+	text-align: center;
+	margin: 29px 0;
+}
+.item{
+	border-top: 1px solid #E0DCD8;
+	margin: 6px 20px;
+	padding: 20px;
+
+}
+.remove-item{
+	display: block;
+	margin-top: 56px;
+
+}
+.empty-cart-greet{
+	margin: 0 auto;
+	width: 400px;
+	text-align: center;
+}
+.empty-cart-greet img{
+	width: auto;
+	height: 300px;
+}
+.empty-cart-greet button{
+	display: block;
+	margin:  0 auto;
+	width: 100%;
+	padding: 5px;
+	margin-top: 20px;
+	letter-spacing: 1px;
+	background-color: white;
+	color: #7D736A;
+	border: 2px solid #7D736A;
+	height: 50px;
+	font-size: 20px;
+	font-weight: 700;
+
+}
+.empty-cart-greet button:hover{
+	display: block;
+	margin:  0 auto;
+	width: 100%;
+	padding: 5px;
+	margin-top: 20px;
+	letter-spacing: 1px;
+	background-color: #7D736A;
+	color: white;
+	border: 2px solid #7D736A;
+	height: 50px;
+	font-size: 20px;
+	font-weight: 700;
+	
+}
+.empty-bag-text{
+	font-size: 35px;
+}
+.empty-bag-text span{
+	font-style: italic;
+	font-size: 23px;
+}
+.scroll-down-text{
+	display: block;
+	width: 600px;
+	margin: 50px auto;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	font-weight: bold;
+	color: cornsilk;
+}
+.sales-report{
+	width: 50%;
+	margin: auto;
+	margin-top: 30px;
+	text-align: left;
+}
+.sales-report tbody tr:last-child{
+	font-weight: bold;
+	text-align: left;
+	border: 2px solid;
+}
+.sales-report tbody tr td:nth-last-child(2){
+	text-align: right;
+}
+
+.sales-report tbody tr:not(:last-child) td:nth-child(2){
+	text-align: justify;
+}
+.sales-report thead th:nth-child(2){
+	width: 300px;
+}
+.sales-report th:nth-child(3){
+	text-align: right;
+}
+.sales-report th:nth-child(2){
+	text-align: left;
+}
+.sales-report-head{
+	text-align: center;
+	padding: 30px;
+	font-size: 40px;
+}
+.sales-results{
+	margin: 0 auto;
+	width: 700px;
+	margin-top: 30px;
+	font-size: 30px;
+	letter-spacing: 1px;
+}
+.price{
+	width: 100px;
+	display: inline;
+	float: left;
+	margin-top: 7px;
+}
+.modal-footer{
+	position: relative;
+}
+.modal-footer .item-added-msg{
+	display: inline-block;
+	position: absolute;
+	left: 40px;
+	color: #5eb15e;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+.modal-footer button.close{
+	color: #ab1111;
+	border: 1px solid;
+	padding: 8px;
+}
+.modal-footer button.close:hover{
+	background-color:#ab1111 ;
+	color: white;
+}
+.modal-footer button.buy{
+	color: green;
+	border: 1px solid;
+}
+.modal-footer button.buy:hover{
+	background-color: green;
+	color: white;
+}
+.modal-footer button.checkoutbutton{
+	color: #0EA7EA;
+	border: 1px solid;
+}
+.modal-footer button.checkoutbutton:hover{
+	background-color: #0EA7EA;
+	color: white;
+}
+
+#heading-billing-address{
+	display: inline-block;
+	width: 300px;
+}
+#heading-shipping-address{
+	display: inline-block;
+	width: 300px;
+}
+#heading-payement{
+	display: inline-block;
+	width: 300px;
+}
+
+
+.step-number {
+	display: inline;
+	float: left;
+}
+
+.step-title{
+	display: block;
+}
+
+.step-title .payement-header{
+	text-decoration: none;
+	color: rosybrown;
+}
+.steps-next-button{
+	cursor: pointer;
+	background-color: #7D736A;
+	color: white !important;
+	border: 1px solid #7D736A;
+	margin-bottom: 22px;
+}
+.steps-next-button:hover{
+	background-color: #5a5550;
+}
+img.card-img{
+	height: 37px;
+	width: auto;
+}
+label.form-check-cart-type:hover{
+	cursor: pointer;
+}
+.card-expiration-data{
+
+	border: 1px solid lightgray;
+	border-radius: 3px;
+
+}
+#expiration-month, #expiration-year{
+	width: 40%;
+	display: inline;
+	border: none;
+
+}
+#expiration-year{
+	float: right;
+}
+.highLightcc {
+	box-shadow: 0 0 1.5px 1px red;
+}
+.addtoCartModal:hover{
+
+}
+.order-summary div:nth-last-child(-n+3){
+	font-size: 14px;
+}
+#delivery-date{
+	display: block;
+	text-align: center;
+}
+.select-christmas{
+	display: block;
+	margin-left: 41%;
+	font-size: 19px;
+	border: 3px solid;
+	border-radius: 20px;
+	margin-top: 10px;
+	padding: 15px;
+	cursor: pointer;
+	opacity: 0.7;
+	background-color: rgba(114,13,8,0.5);
+	color: white;
+	letter-spacing: 0;
+}
+.select-christmas:hover{
+	background-color: rgb(114,13,8);
+
+}	
+#about-us-head, #contacts-us-head{
+	margin: auto;
+	font-size: 50px;
+	padding-bottom: 15px;
+}
+.header-about-us, .header-contact-us{
+	font-size: 24px;
+	letter-spacing: 5px;
+	text-decoration: underline;
+	padding-bottom: 40px;
+	padding-top: 40px;
+}
+
+/* FRONT PAGE CSS END */
